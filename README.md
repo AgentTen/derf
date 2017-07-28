@@ -21,13 +21,11 @@ Use the [`session(_:cameraDidChangeTrackingState:)`](https://developer.apple.com
 
 Use specific terms a user is likely to recognize. For example, if you give textual feedback for plane detection, a user not familiar with technical definitions might mistake the word "plane" as referring to aircraft.
 
-Fall back gracefully if tracking fails, and allow the user to reset tracking if their experience isn't working as expected. See the `restartExperience` button and method in this example's `ViewController` class. The `use3DOFTrackingFallback` variable controls whether to switch to a lower-fidelity session configuration when tracking quality is poor.
+Fall back gracefully if tracking fails, and allow the user to reset tracking if their experience isn't working as expected. In this example's `ViewController` class, see the [`session(_:cameraDidChangeTrackingState:)`](https://developer.apple.com/documentation/arkit/arsessionobserver/2887450-session) for a way to temporarily use lower-fidelity tracking, and the the `restartExperience` button and method for resetting tracking.
 
 **Help users understand the relationship of your app's virtual content to the real world.** Use visual cues in your UI that react to changes in camera position relative to virtual content.
 
-The focus square disappears after the user places an object in the scene, and reappears when the user points the camera away from the object.
-
-The `Plane` class in this example handles visualization of real-world planes detected by ARKit. Its `createOcclusionNode` and `updateOcclusionNode` methods create invisible geometry that realistically obscures virtual content.
+In this sample, the focus square disappears after the user places an object in the scene, and reappears when the user points the camera away from the object.
 
 ## Direct Manipulation
 
@@ -63,6 +61,4 @@ Provide a large enough area where the user can tap (or begin a drag) on a virtua
 
 Use the popover presentation (even on iPhone) for auxiliary view controllers to keep the user in the AR experience while adjusting settings or making a modal selection. In this example, the `SettingsViewController` and `VirtualObjectSelectionViewController` classes use popover presentation.
 
-## Testing
 
-For testing and debugging AR experiences, it helps to have a live visualization of the scene processing that ARKit performs. See the `showDebugVisuals` method in this project's `ViewController` class for world tracking visualization, and the `HitTestVisualization` class for a demonstration of ARKit's feature detection methods.
